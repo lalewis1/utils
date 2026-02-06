@@ -103,7 +103,7 @@ class SystemMonitor:
             cached = self._extract_mem_value(meminfo, "Cached")
 
             if memtotal > 0:
-                memused = memtotal - memfree
+                memused = memtotal - memfree - buffers - cached
                 usage = int(100 * memused / memtotal)
                 return usage
             else:
@@ -309,4 +309,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
